@@ -1,0 +1,3 @@
+usr/include/raye/archive
+usr/lib/*/libraye-archive.so
+usr/lib/*/pkgconfig/raye-archive.pc

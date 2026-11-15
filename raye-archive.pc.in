@@ -1,0 +1,9 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+
+Name: raye-archive
+Description: Raye archive engine
+Version: @RAYE_ARCHIVE_VERSION_STRING@
+Libs: -L${libdir} -lraye-archive
+Cflags: -I${includedir}

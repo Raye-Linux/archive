@@ -1,0 +1,43 @@
+Source: raye-archive
+Section: utils
+Priority: optional
+Maintainer: techoraye <190692880+techoraye@users.noreply.github.com>
+Build-Depends: cmake (>= 3.20),
+               debhelper-compat (= 13),
+               libbrotli-dev,
+               libbz2-dev,
+               liblz4-dev,
+               liblzma-dev,
+               libssl-dev,
+               libzstd-dev,
+               pkgconf,
+               python3,
+               zlib1g-dev
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: libraye-archive0
+Section: libs
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Raye archive engine (library)
+ Opens, tests and extracts ZIP, 7z, RAR, tar and many more archives, and
+ creates 7z, ZIP and tar archives. Detection is by content, extraction
+ never writes outside the destination folder.
+
+Package: libraye-archive-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libraye-archive0 (= ${binary:Version}), ${misc:Depends}
+Description: Raye archive engine (development files)
+ Headers and pkg-config file of the Raye archive engine.
+
+Package: raye-archive
+Architecture: any
+Depends: libraye-archive0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: Raye archive engine (command line tool)
+ raye-archive lists, extracts, tests, creates and updates archives from a
+ terminal: 7z, ZIP, RAR (read only), tar and its compressed forms, ISO,
+ CAB and more.

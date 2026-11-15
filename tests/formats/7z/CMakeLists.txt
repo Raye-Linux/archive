@@ -1,0 +1,12 @@
+# Tests of the 7z format: raye_archive_add_test(test_7z_<what> <file>.cpp [args])
+raye_archive_add_test(test_7z_read test_read.cpp ${RAYE_ARCHIVE_FIXTURES})
+raye_archive_add_test(test_7z_write test_write.cpp)
+add_test(NAME test_7z_seven_zip_compat
+         COMMAND sh ${CMAKE_CURRENT_SOURCE_DIR}/seven-zip-compat.sh $<TARGET_FILE:raye-archive-cli> ${RAYE_ARCHIVE_CORPUS})
+set_tests_properties(test_7z_seven_zip_compat PROPERTIES LABELS raye FIXTURES_REQUIRED corpus SKIP_RETURN_CODE 77 TIMEOUT 600)
+if(RAYE_ARCHIVE_FUZZ)
+    add_executable(fuzz_7z fuzz_7z.cpp)
+    target_compile_options(fuzz_7z PRIVATE -fsanitize=fuzzer,address,undefined)
+    target_link_options(fuzz_7z PRIVATE -fsanitize=fuzzer,address,undefined)
+    target_link_libraries(fuzz_7z PRIVATE raye-archive)
+endif()

@@ -1,0 +1,10 @@
+# Tests of the rar format: raye_archive_add_test(test_rar_<what> <file>.cpp [args])
+raye_archive_add_test(test_rar test_rar.cpp ${RAYE_ARCHIVE_FIXTURES})
+
+if(RAYE_ARCHIVE_FUZZ)
+    add_executable(fuzz_rar fuzz_rar.cpp)
+    target_include_directories(fuzz_rar PRIVATE ${PROJECT_SOURCE_DIR}/src)
+    target_compile_options(fuzz_rar PRIVATE -fsanitize=fuzzer,address,undefined)
+    target_link_options(fuzz_rar PRIVATE -fsanitize=fuzzer,address,undefined)
+    target_link_libraries(fuzz_rar PRIVATE raye-archive)
+endif()

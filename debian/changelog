@@ -1,0 +1,11 @@
+raye-archive (0.5~beta1) resolute; urgency=medium
+
+  * First release: the Raye archive engine, its library and the
+    raye-archive command line tool.
+  * Opens ZIP, 7z, RAR, tar, gz, bz2, xz, zst, lz4, br, ISO, CAB, cpio,
+    ar and rpm, and creates 7z, ZIP and tar. RAR is read only.
+  * Decodes 7-Zip's multithreaded 7z archives on several cores.
+  * Refuses an archive whose declared size is far past its own, and does
+    not follow links that loop back up when compressing.
+
+ -- techoraye <190692880+techoraye@users.noreply.github.com>  Thu, 12 Nov 2026 20:41:16 +0000
